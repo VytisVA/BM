@@ -1,16 +1,15 @@
 require 'pg'
+require 'pry'
 
 class Bookmark
+  def self.all
+    if ENV['RACK_ENV'] == 'test'
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+    else
+      connection = PG.connect(dbname: 'bookmark_manager')
+    end
 
-	def self.all
-		conn = PG::Connection.open(:dbname => 'bookmark_manager')
-		res = conn.exec_params("SELECT * FROM bookmarks")
-		res.map { |bookmark| bookmark['url']}
-	end
-
-	def clearout
-	  	p "Setting up test database..."
-	  	connection = PG.connect(dbname: 'bookmark_manager_test')
-	  	connection.exec("TRUNCATE bookmarks;")
-	end	
+    result = connection.exec("SELECT * FROM bookmarks")
+    result.map { |link| link['url'] }
+  end
 end

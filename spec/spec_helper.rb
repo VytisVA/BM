@@ -26,9 +26,8 @@ require 'rspec'
 Capybara.app = BookmarkManager
 
 RSpec.configure do |config|
-  require './lib/setup_test_database'
   config.before(:each) do
-    clearout
+    require_relative './setup_test_database'
   end
 
   config.expect_with :rspec do |expectations|

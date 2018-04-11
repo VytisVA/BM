@@ -6,4 +6,5 @@ gem 'sinatra'
 gem 'capybara'
 gem 'rspec'
 gem 'pg'
+gem 'pry'
 
