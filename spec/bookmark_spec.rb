@@ -7,8 +7,8 @@ describe Bookmark do
       # connection = PG.connect(dbname: 'bookmark_manager_test')
 
       # Add the test data
-      Bookmark.create(url: 'http://databasetest1.com')
-      Bookmark.create(url: 'http://databasetest2.com')
+      Bookmark.create(url: 'http://databasetest1.com', name: 'databasetest1' )
+      Bookmark.create(url: 'http://databasetest2.com', name: 'databasetest2' )
 
       expected_bookmarks = [
         'http://databasetest1.com',
@@ -21,7 +21,7 @@ describe Bookmark do
 
   describe '.create' do
     it 'creates a new bookmark' do
-      Bookmark.create(url: 'http://www.testbookmark.com')
+      Bookmark.create(url: 'http://www.testbookmark.com', name: 'testbookmark')
 
       expect(Bookmark.all).to include 'http://www.testbookmark.com'
     end

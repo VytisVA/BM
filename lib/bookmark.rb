@@ -16,11 +16,11 @@ class Bookmark
 
   def self.create(options)
   	if valid_url?(options)
-	  connection.exec("INSERT INTO bookmarks (url) VALUES('#{options[:url]}')")
-	  true
-	else
-	  false
-	end    
+	  connection.exec("INSERT INTO bookmarks (url, name) VALUES('#{options[:url]}', '#{options[:name]}')")
+	    true
+  	else
+  	  false
+  	end    
   end
 
   def self.valid_url?(options)

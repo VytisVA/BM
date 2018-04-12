@@ -6,8 +6,8 @@ feature 'Viewing bookmarks' do
   scenario 'A user can see bookmarks' do
   	connection = PG.connect(dbname: 'bookmark_manager_test')
     # Add the test data
-	connection.exec("INSERT INTO bookmarks (url) VALUES ('http://viewing_bookmarks_test.com');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES('http://viewing_bookmarks_test2.com');")
+	connection.exec("INSERT INTO bookmarks (url, name) VALUES ('http://viewing_bookmarks_test.com', 'viewing_bookmarks_test');")
+    connection.exec("INSERT INTO bookmarks (url, name) VALUES('http://viewing_bookmarks_test2.com', 'viewing_bookmarks_test2');")
     
     visit('/bookmarks/bookmarks')
 
