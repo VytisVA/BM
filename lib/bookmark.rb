@@ -15,6 +15,16 @@ class Bookmark
   end
 
   def self.create(options)
-    connection.exec("INSERT INTO bookmarks (url) VALUES('#{options[:url]}')")
+  	if valid_url?(options)
+	  connection.exec("INSERT INTO bookmarks (url) VALUES('#{options[:url]}')")
+	  true
+	else
+	  false
+	end    
+  end
+
+  def self.valid_url?(options)
+    url_regexp = /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+    options[:url] =~ url_regexp ? true : false
   end
 end

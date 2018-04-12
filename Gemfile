@@ -7,4 +7,5 @@ gem 'capybara'
 gem 'rspec'
 gem 'pg'
 gem 'pry'
+gem 'sinatra-flash'
 
